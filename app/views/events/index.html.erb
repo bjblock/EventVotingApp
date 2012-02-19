@@ -1,0 +1,80 @@
+<div class="row">
+	<div class="twelve columns">
+	<div class="notice"><%= flash[:signin] %></div>
+		<div class="five columns survey">
+			<p></p>
+			<p>
+				Don't like what you see? <%= link_to 'Suggest a new event', new_event_path %>
+			</p>
+		</div>
+		<div class="five columns offset-by-one survey">
+			<p class="notice">
+				<strong><%= notice %></strong>
+			</p>
+			<p><em>Note: You can only vote once for each event.</em></p>
+		</div>
+
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="twelve columns survey">
+
+		<% @events.each do |event| %>
+		
+				<div class="panel five columns event-title">
+					<%= link_to event.name, event_url(event.id) %>
+				</div>
+
+				<div class="one columns"></div>
+
+				<div class="panel five columns">
+					<% if session[:user_id].present? %>
+
+						<% if @user.votes.nil? %>
+							<%= form_for(@vote) do |f| %>
+								<%= f.hidden_field "event_id", :value => event.id %>
+								<%= f.hidden_field "user_id", :value => @user.id %>
+								<%= f.label :score %>: <%= f.select :score, [1,2,3,4,5] %> |
+								<%= f.label :comment %>
+								<%= f.text_field :comment %> 
+								<%= submit_tag "Vote!" %>
+							<% end %>
+
+						<%# elsif @user.votes.count <= @number_of_events %>
+						<% elsif @user.votes.find_by_event_id(event.id).nil? %>
+							<%= form_for(@vote) do |f| %>
+								<%= f.hidden_field "event_id", :value => event.id %>
+								<%= f.hidden_field "user_id", :value => @user.id %>
+								<%= f.label :score %>
+								<%= f.select :score, [1,2,3,4,5] %>
+								<%= f.label :comment %>
+								<%= f.text_field :comment %> 
+								<%= f.submit "Vote!" %>
+							<% end %>
+
+						<% else %>
+						  Average Score: <%= number_with_precision(event.votes.average(:score), :precision => 1) %> -- <%= link_to 'Read Comments', votes_url %>
+						<% end %>
+						
+					<% else %>
+						<%= link_to 'Login to vote', new_session_url %>
+					<% end %>
+				</div>
+
+		<% end %>
+
+	</div>
+</div>
+
+
+<div class="row"
+<div class="twelve columns">
+	<div class="five columns survey">
+	<p>
+		<h3><strong><%= link_to 'See the results', votes_url %></strong></h3>
+	</p>
+</div>
+</div>
+</div>

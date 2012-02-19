@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EventVotingApp</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+	<link rel="stylesheet" href="../../../vendor/assets/stylesheets/foundation.css" type="text/css" media="screen" title="no title" charset="utf-8">
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="container">
+	<div class="row">
+		<div class="twelve columns">
+
+			<div class="header">
+			  <% if session[:user_id].present? %>
+			    <p>Hello, <%= User.find(session[:user_id]).name %> | 
+			    	<%= link_to "Sign Out", logout_url %>
+					</p>
+			  <% else %>
+			    <%= link_to "Sign Up", new_user_url %> | <%= link_to "Sign In", new_session_url %>
+			  <% end %>
+			</div>
+	
+			<div class="foundation-header">
+				<h1>The Code Academy Weekly Wind Down</h1>
+				<h4 class="subheader">Each week, we plan an event to get together, take a coding break, and wind down.<br />What events would you attend?</h4>
+			</div>
+
+		</div>
+	</div>
+
+<%= yield %>
+
+</div>
+
+</body>
+</html>

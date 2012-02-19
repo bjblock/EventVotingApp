@@ -1,0 +1,33 @@
+// Place all the styles related to the Events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+div.foundation-header { margin: 0 0 20px 0; padding: 10px 0 0 0; border-bottom: solid 1px #ccc; }
+div.foundation-header h1 { margin-bottom: 0; padding: 0; }
+div.foundation-header h1 a { color: #181818; }
+div.foundation-header h1 a:hover { color: #181818; }
+div.foundation-header .subheader { margin-bottom: 9px; }
+
+.center-text {
+	text-align:center;
+}
+
+.notice {
+	color:#3ac;
+}
+
+.survey {
+	font-size:13px;
+}
+
+.event-title {
+	font-size:16px;
+	text-align:center;
+	font-weight:bold;
+}
+
+.header {
+	margin-top:10px;
+	font-size:14px;
+}

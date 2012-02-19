@@ -1,0 +1,42 @@
+<div class="row">
+	<div class="twelve columns">
+			<div class="panel">
+				<div class="survey">
+<div class="twelve columns">
+	<h2>All Results</h2>
+</div>
+<hr />
+
+<p>
+	<% @events.each do |event| %>
+	
+			<ul>
+				
+	<div class="four columns">
+		<!-- <p>Event:</p> -->
+
+			<h5><strong><%= link_to event.name, event_url(event.id) %></strong></h5>
+			Total # Votes: <%= event.votes.count %> | Average Score: <%= number_with_precision(event.votes.average(:score), :precision => 2) %><br /><br />
+	</div>
+	
+	
+	<div class="seven columns">		
+			<p><strong>Comments:</strong></p>
+			<% event.votes.each do |vote| %>
+				<% if vote.comment.blank? %>
+				<% else %>
+					<li><em>"<%= vote.comment %>"</em></li>
+				<% end %>
+			<% end %>
+	</div>
+
+<hr/>
+
+		</ul>
+	<% end %>
+</p>
+
+</div>
+</div>
+</div>
+</div>
