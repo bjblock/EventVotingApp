@@ -1,8 +1,11 @@
 <div class="row">
 	<div class="twelve columns">
 		<div class="four columns survey panel-space">
-			<p></p>
-			<p>Don't like what you see? <%= link_to 'Suggest a new event', new_event_path %>
+			<p>
+			</p>
+			<p>
+				Have a different idea?<br />
+				<strong><%= link_to 'Suggest a new event.', new_event_path %></strong>
 			</p>
 		</div>
 		<div class="one column">
@@ -11,7 +14,10 @@
 			<p class="notice">
 				<strong><%= notice %></strong>
 			</p>
-			<p><em>Note: You can only vote once for each event.</em></p>
+			<p>
+				<strong>INSTRUCTIONS</strong>: Rate each event 1 to 5 (5 being the best).<br />
+				<em>Note: You can only vote once for each event.</em>
+			</p>
 		</div>
 
 	<!-- </div>
