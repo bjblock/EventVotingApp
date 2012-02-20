@@ -2,9 +2,8 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @events = Event.order("created_at").all
     @vote = Vote.new(params[:vote])
-    @number_of_events = @events.count
   
   	if session[:user_id].present?
       @user = User.find(session[:user_id])
