@@ -63,7 +63,7 @@ class VotesController < ApplicationController
   
     respond_to do |format|
       if @vote.update_attributes(params[:vote])
-        format.html { redirect_to @vote, notice: 'Vote was successfully updated.' }
+        format.html { redirect_to @votes, notice: 'Vote was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
