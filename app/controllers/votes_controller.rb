@@ -34,9 +34,10 @@ class VotesController < ApplicationController
   end
 
   # GET /votes/1/edit
-  # def edit
-  #   @vote = Vote.find(params[:id])
-  # end
+  def edit
+    @vote = Vote.find(params[:id])
+    @event = Event.find_by_id(@vote.event_id)
+  end
 
   # POST /votes
   # POST /votes.json
@@ -57,19 +58,19 @@ class VotesController < ApplicationController
 
   # PUT /votes/1
   # PUT /votes/1.json
-  # def update
-  #   @vote = Vote.find(params[:id])
-  # 
-  #   respond_to do |format|
-  #     if @vote.update_attributes(params[:vote])
-  #       format.html { redirect_to @vote, notice: 'Vote was successfully updated.' }
-  #       format.json { head :no_content }
-  #     else
-  #       format.html { render action: "edit" }
-  #       format.json { render json: @vote.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+  def update
+    @vote = Vote.find(params[:id])
+  
+    respond_to do |format|
+      if @vote.update_attributes(params[:vote])
+        format.html { redirect_to @vote, notice: 'Vote was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @vote.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # DELETE /votes/1
   # DELETE /votes/1.json

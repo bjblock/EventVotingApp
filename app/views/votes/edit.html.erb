@@ -2,11 +2,10 @@
 
 	<% if session[:user_id] == 1 %>
 
-		<h1>Editing event</h1>
+		<h4>Editing vote for <%= @event.name %></h4>
 
-		<%= render 'form' %>
+		<%= render 'vote_form' %>
 
-		<%= link_to 'Show', @event %> |
 		<%= link_to 'Back', events_path %>
 
 	<% else %>
