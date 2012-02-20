@@ -7,11 +7,14 @@ EventVotingApp::Application.routes.draw do
 
   post 'votes/create' => 'votes#create', :as => :create_vote
   
+  get '/votes/results' => 'votes#results'
+  
   resources :votes
 
   resources :events
   
   root :to => 'events#index'
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

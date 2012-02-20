@@ -1,0 +1,35 @@
+<% if session[:user_id].present? %>
+
+	<% if session[:user_id] == 1 %>
+
+		<h4>Listing votes</h4>
+
+		<table>
+		  <tr>
+		    <th>ID</th>
+		    <th>Score</th>
+		    <th>Comment</th>
+		    <th>Event</th>
+		    <th>User</th>
+		    <th></th>
+		  </tr>
+
+		<% @votes.each do |vote| %>
+		  <tr>
+		    <td><%= vote.id %></td>
+		    <td><%= vote.score %></td>
+		    <td><%= vote.comment %></td>
+		    <td><%= find_event(vote) %></td>
+		    <td><%= find_user(vote) %> (<%= vote.user_id %>)</td>
+		    <td><%= link_to 'Edit', edit_vote_path(vote) %></td>
+		  </tr>
+		<% end %>
+		</table>
+
+		<br />
+
+	<% else %>
+ 		<%= render '/shared/missing_page' %>
+	<% end %>
+
+<% end %>

@@ -83,4 +83,9 @@ class VotesController < ApplicationController
   #     format.json { head :no_content }
   #   end
   # end
+  
+  def results
+    @votes = Vote.all
+  end
+  
 end
