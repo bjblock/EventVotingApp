@@ -2,7 +2,7 @@ class VotesController < ApplicationController
   # GET /votes
   # GET /votes.json
   def index
-    @votes = Vote.all
+    @votes = Vote.order("created_at").all
     @events = Event.all
   
     respond_to do |format|
