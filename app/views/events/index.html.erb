@@ -70,11 +70,15 @@
 
 
 <div class="row"
-<div class="twelve columns">
-	<div class="five columns survey">
-	<p>
-		<h3><strong><%= link_to 'See the results', votes_url %></strong></h3>
-	</p>
-</div>
-</div>
+	<div class="twelve columns">
+		<div class="five columns survey">
+			<% if session[:user_id].present? %>
+				<p>
+					<h3><strong><%= link_to 'See the results', votes_url %></strong></h3>
+				</p>
+			<% else %>
+				<h3><strong><%= link_to 'Login to see the results', new_session_url %></strong></h3>
+			<% end %>
+		</div>
+	</div>
 </div>
