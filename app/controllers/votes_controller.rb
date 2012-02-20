@@ -3,7 +3,7 @@ class VotesController < ApplicationController
   # GET /votes.json
   def index
     @votes = Vote.order("created_at").all
-    @events = Event.all
+    @events = Event.order("created_at").all
   
     respond_to do |format|
       format.html # index.html.erb
