@@ -1,5 +1,7 @@
 EventVotingApp::Application.routes.draw do
   
+  resources :polls
+
   get '/logout' => 'sessions#destroy', :as => :logout
   
   resources :users
